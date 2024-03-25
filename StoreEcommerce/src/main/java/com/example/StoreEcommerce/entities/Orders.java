@@ -25,7 +25,7 @@ import lombok.Data;
 public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // oto create id
-	Integer orderId;
+	Long orderId;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //hibernate üzerinde one to one many to one gibi bir çok ilişki kurabiliriz.
 	@JoinColumn(name = "user_id", nullable = false)
@@ -44,5 +44,5 @@ public class Orders {
 	
 	String orderAddress;
 	
-	Integer productCount;
+	Long productCount;
 }

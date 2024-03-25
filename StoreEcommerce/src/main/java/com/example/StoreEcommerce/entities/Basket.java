@@ -21,7 +21,7 @@ import lombok.Data;
 public class Basket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // oto create id
-	 Integer basketId;
+	 Long basketId;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //hibernate üzerinde one to one many to one gibi bir çok ilişki kurabiliriz.
 	@JoinColumn(name = "user_id", nullable = false)
