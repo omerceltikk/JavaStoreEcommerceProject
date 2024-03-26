@@ -22,7 +22,7 @@ import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
-@Table(name="refresh_token")
+@Table(name="StoreRefreshToken")
 @Data
 public class RefreshToken {
 	@Id

@@ -33,19 +33,19 @@ public class ProductController {
 		return productService.getAllProducts();
 	}
 	@GetMapping("/{productsId}")
-	public Products getOnePost(@PathVariable Long productsId) {
+	public Products getOneProduct(@PathVariable Long productsId) {
 		return productService.getOneProductById(productsId);
 	}
 	@PostMapping
-	public Products createPost(@RequestBody ProductCreateRequest newPostRequest) throws Exception {
+	public Products createProduct(@RequestBody ProductCreateRequest newPostRequest) throws Exception {
 		return productService.createProduct(newPostRequest);
 	}
 	@PutMapping("/{productsId}")
-	public Products updatePost (@PathVariable Long productsId, @RequestBody BuyingProductUpdateRequest buyingProductUpdateRequest) throws Exception {
+	public Products updateProduct (@PathVariable Long productsId, @RequestBody BuyingProductUpdateRequest buyingProductUpdateRequest) throws Exception {
 		return productService.updateProduct(productsId,buyingProductUpdateRequest);
 	}
 	@DeleteMapping("/{prodcutsId}")
-	public void deletePost (@PathVariable Integer productsId ,@RequestBody DeleteProductRequest deleteProductRequest ) throws Exception {
+	public void deletePproduct (@PathVariable Integer productsId ,@RequestBody DeleteProductRequest deleteProductRequest ) throws Exception {
 		productService.deletePost(productsId,deleteProductRequest);
 	}
 

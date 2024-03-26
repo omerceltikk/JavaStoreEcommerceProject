@@ -19,11 +19,11 @@ import com.example.StoreEcommerce.services.FavoritesService;
 
 
 @RestController
-@RequestMapping("/favorites")
-public class FavoritesController {
+@RequestMapping("/categories")
+public class CategoryController {
 private	FavoritesService favoritesService;
 	
-	public FavoritesController(FavoritesService favoritesService) {
+	public CategoryController(FavoritesService favoritesService) {
 		this.favoritesService = favoritesService;
 	}
 	

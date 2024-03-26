@@ -47,7 +47,7 @@ private	BasketService basketService;
 		return basketService.createOneBasket(request);
 	}
 	@PutMapping("/{basketId}")
-	public Basket updatePost (@PathVariable Long basketId, @RequestBody BasketCreateRequest basketCreateRequest) throws Exception {
+	public Basket updateBasket (@PathVariable Long basketId, @RequestBody BasketCreateRequest basketCreateRequest) throws Exception {
 		return basketService.updateBasket(basketId,basketCreateRequest);
 	}
 	@DeleteMapping("/{basketId}")
