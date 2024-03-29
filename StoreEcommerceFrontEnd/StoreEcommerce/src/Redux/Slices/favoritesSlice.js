@@ -1,32 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
-export const fetchData = createAsyncThunk("favorites/getFavorites" , async () => {
-    const res = "helpers fetch";
-    // console.log(res.data);
-    return  res.data;
-})
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+    const res = FetchGetMethod("favorites") ;
+    return res;
+});
 
 export const favoritesSlice = createSlice({
     name: "favorites",
     initialState: {
-        categories: [],
+        favorites: [],
         status: "idle",
     },
     reducers: {
 
     },
-    extraReducers: {
-        [fetchData.fulfilled]: (state,action) => {
-          
-        },
-        [fetchData.pending]: (state,action) => {
-            state.status = "loading";
-        },
-        [fetchData.rejected]: (state,action) => {
-            state.status = "failed";
-            state.error = action.error.message;
-        }
-    }
-})
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchData.fulfilled, (state, action) => {
+                state.status = "fulfilled";
+                state.favorites = action.payload;
+            })
+            .addCase(fetchData.pending, (state, action) => {
+                state.status = "loading";
+            })
+            .addCase(fetchData.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            });
+    },
+});
 
 export const {} = favoritesSlice.actions;
 

@@ -1,32 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
-export const fetchData = createAsyncThunk("orders/getOrders" , async () => {
-    const res = "helpers fetch";
-    // console.log(res.data);
-    return  res.data;
-})
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+    const res = FetchGetMethod("orders") ;
+    return res;
+});
 
 export const ordersSlice = createSlice({
     name: "orders",
     initialState: {
-        categories: [],
+        orders: [],
         status: "idle",
     },
     reducers: {
 
     },
-    extraReducers: {
-        [fetchData.fulfilled]: (state,action) => {
-          
-        },
-        [fetchData.pending]: (state,action) => {
-            state.status = "loading";
-        },
-        [fetchData.rejected]: (state,action) => {
-            state.status = "failed";
-            state.error = action.error.message;
-        }
-    }
-})
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchData.fulfilled, (state, action) => {
+                state.status = "fulfilled";
+                state.orders = action.payload;
+            })
+            .addCase(fetchData.pending, (state, action) => {
+                state.status = "loading";
+            })
+            .addCase(fetchData.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            });
+    },
+});
 
 export const {} = ordersSlice.actions;
 

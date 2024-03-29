@@ -1,33 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
-export const fetchData = createAsyncThunk("baskets/getBaskets" , async () => {
-    const res = "helpers fetch";
-    // console.log(res.data);
-    return  res.data;
-})
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const basketSlice = createSlice({
-    name: "basket",
+export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+    const res = FetchGetMethod("basket") ;
+    return res;
+});
+
+export const basketsSlice = createSlice({
+    name: "baskets",
     initialState: {
-        basketData: [],
+        baskets: [],
         status: "idle",
     },
     reducers: {
 
     },
-    extraReducers: {
-        [fetchData.fulfilled]: (state,action) => {
-          
-        },
-        [fetchData.pending]: (state,action) => {
-            state.status = "loading";
-        },
-        [fetchData.rejected]: (state,action) => {
-            state.status = "failed";
-            state.error = action.error.message;
-        }
-    }
-})
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchData.fulfilled, (state, action) => {
+                state.status = "fulfilled";
+                state.baskets = action.payload;
+            })
+            .addCase(fetchData.pending, (state, action) => {
+                state.status = "loading";
+            })
+            .addCase(fetchData.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            });
+    },
+});
 
-export const {} = basketSlice.actions;
+export const {} = basketsSlice.actions;
 
-export default basketSlice.reducer;
+export default basketsSlice.reducer;

@@ -1,32 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
-export const fetchData = createAsyncThunk("users/getUsers" , async () => {
-    const res = "helpers fetch";
-    // console.log(res.data);
-    return  res.data;
-})
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+    const res = FetchGetMethod("auth") ;
+    return res;
+});
 
 export const usersSlice = createSlice({
     name: "users",
     initialState: {
-        userData: [],
+        users: [],
         status: "idle",
     },
     reducers: {
 
     },
-    extraReducers: {
-        [fetchData.fulfilled]: (state,action) => {
-          
-        },
-        [fetchData.pending]: (state,action) => {
-            state.status = "loading";
-        },
-        [fetchData.rejected]: (state,action) => {
-            state.status = "failed";
-            state.error = action.error.message;
-        }
-    }
-})
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchData.fulfilled, (state, action) => {
+                state.status = "fulfilled";
+                state.users = action.payload;
+            })
+            .addCase(fetchData.pending, (state, action) => {
+                state.status = "loading";
+            })
+            .addCase(fetchData.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            });
+    },
+});
 
 export const {} = usersSlice.actions;
 
