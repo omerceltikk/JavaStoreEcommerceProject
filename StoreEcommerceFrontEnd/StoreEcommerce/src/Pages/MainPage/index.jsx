@@ -5,7 +5,7 @@ const MainPage = () => {
     <div className='mainPageSection'>
         <div className="container">
             <div className="row">
-
+            
             </div>
         </div>
     </div>

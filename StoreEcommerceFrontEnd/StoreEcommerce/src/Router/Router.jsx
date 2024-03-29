@@ -1,15 +1,20 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
-import Login from './Pages/Login'
-import Signup from './Pages/Signup'
 import MainPage from '../Pages/MainPage'
-import User from './Components/User'
 
 const Router = () => {
   const routes = useRoutes([
     {
         path:"/",
         element: <MainPage />
+    },
+    {
+      path:"/authentication",
+      // element: <Login />
+  },
+  {
+        path:"/categories/:categoryId",
+        // element: <User />
     },
     // {
     //     path:"/login",

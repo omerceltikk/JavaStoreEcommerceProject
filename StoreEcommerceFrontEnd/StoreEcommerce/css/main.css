@@ -11844,6 +11844,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+:root {
+  --general-secondary-color:#7c7c7c;
+  --general-menu-color: rgba(255, 255, 255, 0.3);
+}
+
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -18792,8 +18797,17 @@ progress {
     display: none !important;
   }
 }
-.customNavbarStyle {
-  width: 25%;
+:root {
+  --general-secondary-color: #7c7c7c;
+  --general-darksec-color: #5c5c5c;
+  --general-menu-color: rgba(255, 255, 255, 0.7);
+}
+
+.customCloseNavbar {
+  width: 40%;
+}
+
+.customTransition {
   transition: all 1s ease-in-out;
 }
 
@@ -18802,12 +18816,76 @@ progress {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  width: 100%;
 }
 
-.customOpenNavbar {
-  width: 100%;
+.customDropdown {
+  background-color: var(--general-menu-color);
+}
+
+.customInput {
+  outline: none;
+  border: 1px solid var(--general-darksec-color);
+  background-color: var(--general-menu-color);
+}
+
+.customNavbarStyle {
+  border: 1px solid;
+  border-color: var(--general-secondary-color);
+  z-index: 100;
+  outline: none;
+  box-shadow: 0px 0px 15px 3px rgba(255, 255, 255, 0.2);
+}
+
+.customLink {
+  list-style: none;
+  text-decoration: none;
+}
+
+.chevronAnimation {
+  animation-name: brightAnimation;
+  animation-duration: 1500ms;
+  color: var(--general-darksec-color);
   transition: all 1s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+}
+
+.chevronAnimation2 {
+  animation-name: brightAnimation;
+  animation-duration: 1500ms;
+  color: var(--general-darksec-color);
+  transition: all 1s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 500ms;
+}
+
+.chevronAnimation3 {
+  animation-name: brightAnimation;
+  animation-duration: 1500ms;
+  color: var(--general-darksec-color);
+  transition: all 1s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+}
+
+@keyframes brightAnimation {
+  0% {
+    color: var(--general-darksec-color);
+  }
+  100% {
+    color: var(--general-secondary-color);
+    text-shadow: -1px 0px 24px var(--general-secondary-color);
+  }
+}
+@media screen and (min-width: 1140px) {
+  .customCloseNavbar {
+    width: 33%;
+  }
+}
+@media screen and (min-width: 1480px) {
+  .customCloseNavbar {
+    width: 25%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

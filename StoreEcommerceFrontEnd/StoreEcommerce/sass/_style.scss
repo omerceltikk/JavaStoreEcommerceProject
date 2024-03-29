@@ -1,17 +1,81 @@
-.customNavbarStyle{
-    width: 25%;
-    transition: all 1s ease-in-out ;
+:root {
+    --general-secondary-color: #7c7c7c;
+    --general-darksec-color: #5c5c5c;
+    --general-menu-color: rgba(255, 255, 255, 0.7);
 }
 
-.mainPageSection{
+.customCloseNavbar {
+    width: 40%;
+}
+.customTransition{
+    transition: all 1s ease-in-out;
+}
+.mainPageSection {
     background-image: url("../assets/indir.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    width: 100%;
 }
-.customOpenNavbar{
-    width: 100%;
-    transition: all 1s ease-in-out ;
-    
+.customDropdown{
+    background-color: var(--general-menu-color);
+}
+.customInput{
+    outline: none;
+    border: 1px solid var(--general-darksec-color);
+    background-color: var(--general-menu-color);
+}
+.customNavbarStyle {
+    border: 1px solid;
+    border-color: var(--general-secondary-color);
+    z-index: 100;
+    outline: none;
+    box-shadow: 0px 0px 15px 3px rgba(255, 255, 255, 0.2);
+
+}
+.customLink{
+    list-style: none;
+    text-decoration: none;
+}
+@mixin animationframe($d) {
+    animation-name: brightAnimation;
+    animation-duration: 1500ms;
+    color: var(--general-darksec-color);
+    transition: all 1s ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: $d ;
+}
+
+.chevronAnimation {
+    @include animationframe(0s);
+}
+
+.chevronAnimation2 {
+    @include animationframe(500ms);
+}
+
+.chevronAnimation3 {
+    @include animationframe(1s);
+}
+
+@keyframes brightAnimation {
+    0% {
+        color: var(--general-darksec-color);
+    }
+
+    100% {
+        color: var(--general-secondary-color);
+        text-shadow: -1px 0px 24px var(--general-secondary-color);
+    }
+}
+
+@media screen and (min-width:1140px) {
+    .customCloseNavbar {
+        width: 33%;
+    }
+}
+
+@media screen and (min-width:1480px) {
+    .customCloseNavbar {
+        width: 25%;
+    }
 }
