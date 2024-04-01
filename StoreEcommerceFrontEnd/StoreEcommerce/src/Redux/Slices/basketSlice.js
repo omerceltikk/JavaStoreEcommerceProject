@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { FetchGetMethod } from "../FetchServices";
 
-export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+export const fetchBasketData = createAsyncThunk("basket/getBasket", async () => {
     const res = FetchGetMethod("basket") ;
     return res;
 });
@@ -16,14 +17,14 @@ export const basketsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchData.fulfilled, (state, action) => {
+            .addCase(fetchBasketData.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.baskets = action.payload;
             })
-            .addCase(fetchData.pending, (state, action) => {
+            .addCase(fetchBasketData.pending, (state, action) => {
                 state.status = "loading";
             })
-            .addCase(fetchData.rejected, (state, action) => {
+            .addCase(fetchBasketData.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });

@@ -1,20 +1,35 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import MainPage from '../Pages/MainPage'
-
+import Categories from '../Pages/Categories'
+import ProductDetail from '../Pages/ProductDetail'
+import BasketPage from '../Pages/BasketPage'
+import CompleteBuy from '../Pages/CompleteBuy'
 const Router = () => {
   const routes = useRoutes([
     {
-        path:"/",
-        element: <MainPage />
+      path: "/",
+      element: <MainPage />
     },
     {
-      path:"/authentication",
+      path: "/authentication",
       // element: <Login />
-  },
-  {
-        path:"/categories/:categoryId",
-        // element: <User />
+    },
+    {
+      path: "/categories/:categoryId",
+      element: <Categories />
+    },
+    {
+      path: "/products/:productId",
+      element: <ProductDetail />
+    },
+    {
+      path: "/basket",
+      element: <BasketPage />
+    },
+    {
+      path: "/CompleteBuy",
+      element: <CompleteBuy />
     },
     // {
     //     path:"/login",
@@ -28,7 +43,7 @@ const Router = () => {
     //     path:"/users/:userId",
     //     element: <User />
     // },
-])
+  ])
 
   return routes
 }

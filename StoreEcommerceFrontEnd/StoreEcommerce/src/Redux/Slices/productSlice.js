@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+import { FetchGetMethod } from "../FetchServices";
+export const fetchProductsData = createAsyncThunk("products/getProducts", async () => {
     const res = FetchGetMethod("products") ;
     return res;
 });
@@ -10,22 +10,24 @@ export const productsSlice = createSlice({
     initialState: {
         products: [],
         status: "idle",
+        error: "",
     },
     reducers: {
 
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchData.fulfilled, (state, action) => {
+            .addCase(fetchProductsData.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.products = action.payload;
             })
-            .addCase(fetchData.pending, (state, action) => {
+            .addCase(fetchProductsData.pending, (state, action) => {
                 state.status = "loading";
             })
-            .addCase(fetchData.rejected, (state, action) => {
+            .addCase(fetchProductsData.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
+                console.log(action.error.message)
             });
     },
 });
