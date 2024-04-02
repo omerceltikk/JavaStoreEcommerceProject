@@ -3,21 +3,27 @@ import BasketDropdownCard from '../BasketDropdownCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBasketData } from '../../Redux/Slices/basketSlice';
 import { Link } from 'react-router-dom';
+import { errorToastMessage } from '../../Messages';
 
 const BasketDropdown = () => {
     const dispatch = useDispatch();
     const [basketProducts, setBasketProducts] = useState([]);
     const status = useSelector((state) => state.baskets.status);
     const data = useSelector((state) => state.baskets)
-
+    const userData = useSelector((state) => state.users.users)
 
     useEffect(() => {
         if (status == "idle") {
-            dispatch(fetchBasketData());
+            dispatch(fetchBasketData(`basket?userId=${userData[0].userId}`));
         }
         if (status == "fulfilled") {
-            const filteredData = data.baskets;
-            setBasketProducts(filteredData);
+            const filteredData = data.baskets.filter((item) => item.userId == userData[0].userId);
+            if (filteredData.length >= 0 && filteredData.status != 400) {
+                setBasketProducts(filteredData);
+            }
+            else {
+                errorToastMessage(filteredData.error)
+            }
         }
     }, [dispatch, data])
 

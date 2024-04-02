@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { FetchGetMethod } from "../FetchServices";
 
-export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+export const fetchFavoritesData = createAsyncThunk("favorites/getFavorites", async () => {
     const res = FetchGetMethod("favorites") ;
     return res;
 });
@@ -16,14 +17,14 @@ export const favoritesSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchData.fulfilled, (state, action) => {
+            .addCase(fetchFavoritesData.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.favorites = action.payload;
             })
-            .addCase(fetchData.pending, (state, action) => {
+            .addCase(fetchFavoritesData.pending, (state, action) => {
                 state.status = "loading";
             })
-            .addCase(fetchData.rejected, (state, action) => {
+            .addCase(fetchFavoritesData.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });

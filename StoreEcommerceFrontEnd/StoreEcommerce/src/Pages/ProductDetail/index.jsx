@@ -117,7 +117,7 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-         <BuyButtonGroup/>
+         <BuyButtonGroup count={count} item={product}/>
         </div>
       </div>
     </div>

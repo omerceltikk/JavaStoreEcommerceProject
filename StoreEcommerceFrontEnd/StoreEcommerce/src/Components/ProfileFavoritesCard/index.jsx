@@ -1,0 +1,29 @@
+import React from 'react'
+import { FetchDeleteMethod } from '../../Redux/FetchServices'
+const ProfileFavoritesCard = ({ item }) => {
+
+    const handleDeleteBasketItem = () => {
+        FetchDeleteMethod("favorites",item.favoritesId);
+
+    }
+    console.log(item)
+    return (
+        <div className='row px-3 py-4 m-0 align-items-center text-center border-bottom border-1 border-secondary'>
+            <div className="col-2 basketCardImage">
+                <img className='img-fluid' src="../../../assets/productsimage3.jpg" alt="" />
+            </div>
+            <div className="col-4 fs-6 customCardText">
+                {item.productName}
+            </div>
+            <div className="col-4 fw-bold fs-6 text-secondary basketCardText text-center">
+                {item.productPrice}$
+            </div>
+            <div onClick={() => handleDeleteBasketItem()} className="col-2 fs-6 hoverDarkEffect text-secondary ">
+                <i className="bi bi-trash"></i>
+            </div>
+        </div>
+
+    )
+}
+
+export default ProfileFavoritesCard

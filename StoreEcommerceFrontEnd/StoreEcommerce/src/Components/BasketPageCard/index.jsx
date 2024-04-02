@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import { FetchDeleteMethod } from '../../Redux/FetchServices'
+import { fetchBasketData } from '../../Redux/Slices/basketSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const BasketPageCard = ({ item }) => {
+    const dispatch = useDispatch();
+    const userData = useSelector((state) => state.users.users)
+
     const [productCount, setProductCount] = useState(item.productCount)
-    const handleDeleteBasketItem = () => {
-        FetchDeleteMethod("baskets", item.basketId)
+    const handleDeleteBasketItem = async () => {
+        await FetchDeleteMethod("basket", item.basketId)
+        await dispatch(fetchBasketData(`basket?userId=${userData[0].userId}`));
     }
     return (
 

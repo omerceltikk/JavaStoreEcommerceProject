@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { FetchGetMethod } from "../FetchServices";
 
-export const fetchBasketData = createAsyncThunk("basket/getBasket", async () => {
-    const res = FetchGetMethod("basket") ;
+export const fetchBasketData = createAsyncThunk("basket/getBasket", async (url) => {
+    const res = FetchGetMethod(url) ;
     return res;
 });
 

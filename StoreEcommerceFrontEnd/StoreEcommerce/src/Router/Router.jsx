@@ -5,15 +5,15 @@ import Categories from '../Pages/Categories'
 import ProductDetail from '../Pages/ProductDetail'
 import BasketPage from '../Pages/BasketPage'
 import CompleteBuy from '../Pages/CompleteBuy'
+import ProfilePage from '../Pages/Profile'
+import Auth from '../Pages/Auth'
+import { useSelector } from 'react-redux'
 const Router = () => {
+  const userData = useSelector((state) => state.users)
   const routes = useRoutes([
     {
       path: "/",
       element: <MainPage />
-    },
-    {
-      path: "/authentication",
-      // element: <Login />
     },
     {
       path: "/categories/:categoryId",
@@ -31,18 +31,14 @@ const Router = () => {
       path: "/CompleteBuy",
       element: <CompleteBuy />
     },
-    // {
-    //     path:"/login",
-    //     element: <Login />
-    // },
-    // {
-    //     path:"/Signup",
-    //     element: <Signup />
-    // },
-    // {
-    //     path:"/users/:userId",
-    //     element: <User />
-    // },
+    {
+        path:"/authentication",
+        element: <Auth />
+    },
+    {
+        path:"/profile/:userId",
+        element: <ProfilePage />
+    },
   ])
 
   return routes

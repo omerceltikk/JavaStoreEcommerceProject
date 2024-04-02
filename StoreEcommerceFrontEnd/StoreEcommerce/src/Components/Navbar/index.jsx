@@ -4,11 +4,14 @@ import { fetchData } from "../../Redux/Slices/categorySlice";
 import Loading from '../Loading';
 import { Link } from 'react-router-dom';
 import BasketDropdown from '../BasketDropdown';
+import { fetchUserData } from '../../Redux/Slices/userSlice';
 const Navbar = () => {
     const [expand, setExpand] = useState(false)
     const [categories, setCategories] = useState([]);
+    const [currUser, setCurrUser] = useState(null);
     const data = useSelector((state) => state.categories.status);
     const data2 = useSelector((state) => state.categories);
+    const userData = useSelector((state) => state.users);
     const dispacth = useDispatch();
 
     const filterCategoryData = async () => {
@@ -27,6 +30,13 @@ const Navbar = () => {
             filterCategoryData();
         }
     }, [dispacth, data2])
+
+    useEffect(() => {
+
+        if (userData.users.length > 0) {
+            setCurrUser(userData.users[0]);
+        }
+    }, [dispacth, userData])
 
     if (data == "failed") {
         return (
@@ -80,23 +90,26 @@ const Navbar = () => {
                                     </div>
                                     <div className='d-flex align-items-center'>
                                         <div className={`${expand ? "d-flex" : "d-none"}`} >
-                                            <div className='d-flex align-items-center'>
+                                            <div className={`align-items-center ${currUser ? "d-none" : "d-flex"}`}>
                                                 <Link to={"/authentication"} className='link-underline link-underline-opacity-0 '>
                                                     <div className='text-secondary fst-italic mx-2'>
                                                         Login / Register
                                                     </div>
                                                 </Link>
+                                            </div>
+
+                                            <div className={` ${currUser ? "d-block" : "d-none"}`}>
                                                 <BasketDropdown />
                                             </div>
-                                            <div className="dropdown d-none mx-2">
+                                            <div className={`dropdown mx-2 align-items-center ${currUser ? "d-flex" : "d-none"}`}>
                                                 <a className="nav-link dropdown-toggle text-secondary customTransition" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    usernama
+                                                    {currUser?.userName}
                                                 </a>
-                                                <ul className="dropdown-menu customTransition customDropdown mt-4">
-                                                    <li><button className="dropdown-item" type="button">Profile</button></li>
+                                                <div className="dropdown-menu customTransition customDropdown mt-4">
+                                                    <Link to={`profile/${currUser?.userId}`}><button className="dropdown-item" type="button">Profile</button></Link>
                                                     <li><button className="dropdown-item" type="button">Settings</button></li>
                                                     <li><button className="dropdown-item" type="button">LogOut</button></li>
-                                                </ul>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className={`${expand ? "d-none" : "d-flex"} btn chevronAnimation `} onClick={() => setExpand(!expand)}>
@@ -121,7 +134,7 @@ const Navbar = () => {
                             <div className="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                                 <i className="bi bi-list text-secondary border border-1 border-dark p-2 rounded-3"></i>
                             </div>
-                            <div className="">
+                            <div className={` ${currUser ? "d-block" : "d-none"}`}>
                                 <BasketDropdown />
                             </div>
                         </div>
@@ -133,21 +146,21 @@ const Navbar = () => {
                             <div className="offcanvas-body">
                                 <div className='row flex-column'>
                                     <div className=''>
-                                        <Link to={"/authentication"} className='link-underline link-underline-opacity-0 '>
+                                        <Link to={"/authentication"} className={`link-underline link-underline-opacity-0 ${currUser ? "d-none" : "d-block"}`}>
                                             <div className='text-secondary fst-italic'>
                                                 Login / Register
                                             </div>
                                         </Link>
                                     </div>
-                                    <div className="dropdown d-none mx-2">
+                                    <div className={`dropdown mx-2 ${currUser ? "d-block" : "d-none"}`}>
                                         <a className="nav-link dropdown-toggle text-secondary customTransition" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             usernama
                                         </a>
-                                        <ul className="dropdown-menu customTransition customDropdown mt-4">
-                                            <li><button className="dropdown-item" type="button">Profile</button></li>
+                                        <div className="dropdown-menu customTransition customDropdown mt-4">
+                                            <Link className='' to={`profile/${currUser?.userId}`}><button className="dropdown-item" type="button">Profile</button></Link>
                                             <li><button className="dropdown-item" type="button">Settings</button></li>
                                             <li><button className="dropdown-item" type="button">LogOut</button></li>
-                                        </ul>
+                                        </div>
                                     </div>
                                     <div>
                                         <input className=" rounded-pill p-1 customInput w-100 px-3 mt-4" type="search" placeholder="Search" aria-label="Search" />

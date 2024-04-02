@@ -19,7 +19,7 @@ const Categories = () => {
             const filteredData = data.products.filter((item) => categoryId == item.categoryId); 
             setProducts(filteredData);
         }
-    }, [dispatch, data])
+    }, [dispatch, data,categoryId])
 
     return (
         <>

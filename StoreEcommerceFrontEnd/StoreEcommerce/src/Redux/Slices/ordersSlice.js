@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchData = createAsyncThunk("categories/getCategories", async () => {
+export const fetchOrdersData = createAsyncThunk("orders/getOrders", async () => {
     const res = FetchGetMethod("orders") ;
     return res;
 });
@@ -16,14 +16,14 @@ export const ordersSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchData.fulfilled, (state, action) => {
+            .addCase(fetchOrdersData.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.orders = action.payload;
             })
-            .addCase(fetchData.pending, (state, action) => {
+            .addCase(fetchOrdersData.pending, (state, action) => {
                 state.status = "loading";
             })
-            .addCase(fetchData.rejected, (state, action) => {
+            .addCase(fetchOrdersData.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });

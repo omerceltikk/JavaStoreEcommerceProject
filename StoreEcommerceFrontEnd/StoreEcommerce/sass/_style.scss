@@ -22,7 +22,7 @@
     
 }
 .mainPageSection {
-    background-image: url("../assets/indir.jpg");
+    background-image: url("../assets/authmain6.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -47,6 +47,10 @@
     outline: none;
     box-shadow: 0px 0px 15px 3px rgba(255, 255, 255, 0.2);
 
+}
+.iconPosition{
+    top: 0;
+    right: 0;
 }
 .customCardText{
     font-size: 10px !important;

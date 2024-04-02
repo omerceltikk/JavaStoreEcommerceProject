@@ -1,29 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { FetchPostMethod } from "../FetchServices";
 
-export const fetchData = createAsyncThunk("categories/getCategories", async () => {
-    const res = FetchGetMethod("auth") ;
+export const fetchUserData = createAsyncThunk("users/getUsers", async (url,body) => {
+    const res = FetchPostMethod(url,body) ;
     return res;
 });
 
 export const usersSlice = createSlice({
     name: "users",
     initialState: {
-        users: [],
+        users: JSON.parse(localStorage.getItem("user")) ? [JSON.parse(localStorage.getItem("user"))] : [],
         status: "idle",
     },
-    reducers: {
-
-    },
+ 
     extraReducers: (builder) => {
         builder
-            .addCase(fetchData.fulfilled, (state, action) => {
+            .addCase(fetchUserData.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.users = action.payload;
             })
-            .addCase(fetchData.pending, (state, action) => {
+            .addCase(fetchUserData.pending, (state, action) => {
                 state.status = "loading";
             })
-            .addCase(fetchData.rejected, (state, action) => {
+            .addCase(fetchUserData.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });
