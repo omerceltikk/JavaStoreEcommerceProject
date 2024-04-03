@@ -126,7 +126,7 @@ const Navbar = () => {
                         </div>
                     </nav>
                 </div>
-                <div className='position-fixed w-100'>
+                <div className='position-fixed w-100 navbarIndex'>
                     <div className=' d-block d-lg-none m-5 mt-4 '>
                         <div className='d-flex justify-content-between'>
                             <div className="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -154,7 +154,7 @@ const Navbar = () => {
                                         <a className="nav-link dropdown-toggle text-secondary customTransition" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             usernama
                                         </a>
-                                        <div className="dropdown-menu customTransition customDropdown mt-4">
+                                        <div className="dropdown-menu  customDropdown mt-3">
                                             <Link className='' to={`profile/${currUser?.userId}`}><button className="dropdown-item" type="button">Profile</button></Link>
                                             <li><button className="dropdown-item" type="button">Settings</button></li>
                                             <li><button className="dropdown-item" type="button">LogOut</button></li>
