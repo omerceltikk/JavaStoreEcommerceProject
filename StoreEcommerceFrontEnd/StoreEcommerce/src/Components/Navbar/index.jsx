@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchData } from "../../Redux/Slices/categorySlice";
-import Loading from '../Loading';
 import { Link } from 'react-router-dom';
 import BasketDropdown from '../BasketDropdown';
-import { fetchUserData } from '../../Redux/Slices/userSlice';
 const Navbar = () => {
     const [expand, setExpand] = useState(false)
     const [categories, setCategories] = useState([]);
@@ -73,7 +71,7 @@ const Navbar = () => {
                                                                     <div className={` row ${expand ? "row-cols-2" : "row-cols-1"}`}>
                                                                         {
                                                                             data2.categories.filter((item) => item.categoryGender == category).map((filteredItem) => (
-                                                                                <li key={filteredItem.id}><Link to={`/categories/${filteredItem.id}`} className="customLink text-secondary p-4" href="#">{filteredItem.category}</Link></li>
+                                                                                <div key={filteredItem.id}><Link to={`/categories/${filteredItem.id}`} className="customLink text-secondary p-4" href="#">{filteredItem.category}</Link></div>
                                                                             ))
                                                                         }
                                                                     </div>
@@ -178,7 +176,7 @@ const Navbar = () => {
                                                                     <div className={`row`}>
                                                                         {
                                                                             data2.categories.filter((item) => item.categoryGender == category).map((filteredItem) => (
-                                                                                <li key={filteredItem.id}><Link to={`/categories/${filteredItem.id}`} className="customLink text-secondary mt-2 mx-4" href="#">{filteredItem.category}</Link></li>
+                                                                                <div key={filteredItem.id}><Link to={`/categories/${filteredItem.id}`} className="customLink text-secondary mt-2 mx-4" href="#">{filteredItem.category}</Link></div>
                                                                             ))
                                                                         }
                                                                     </div>

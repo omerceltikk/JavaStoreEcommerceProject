@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap");
 :root {
   --general-secondary-color:#7c7c7c;
   --general-menu-color: rgba(255, 255, 255, 0.3);
@@ -74,7 +75,7 @@
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-family: "Barlow Condensed", sans-serif;
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -12188,7 +12189,7 @@ progress {
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-family: "Barlow Condensed", sans-serif;
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -18449,7 +18450,7 @@ textarea.form-control-lg {
   z-index: var(--bs-tooltip-zindex);
   display: block;
   margin: var(--bs-tooltip-margin);
-  font-family: var(--bs-font-sans-serif);
+  font-family: "Barlow Condensed", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -18559,7 +18560,7 @@ textarea.form-control-lg {
   z-index: var(--bs-popover-zindex);
   display: block;
   max-width: var(--bs-popover-max-width);
-  font-family: var(--bs-font-sans-serif);
+  font-family: "Barlow Condensed", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -29124,6 +29125,8 @@ textarea.form-control-lg {
   --general-darksec-color: #5c5c5c;
   --general-menu-color: rgba(255, 255, 255);
   --delete-hover-color: #3b0000;
+  --card-general-bg-color:#E5DDC5;
+  --shadow-general-bg-color:#4b3800;
 }
 
 body {
@@ -29146,11 +29149,67 @@ body {
   text-align: center;
 }
 
+.profilePageImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.word-wrap {
+  word-wrap: break-word;
+}
+
 .mainPageSection {
   background-image: url("../assets/authmain6.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  background-position: top;
+}
+
+.mainBg1 {
+  background-image: url("../assets/mainresponsive1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: bottom;
+}
+
+.mainBg2 {
+  background-image: url("../assets/mainresponsive2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: bottom;
+}
+
+.mainBg3 {
+  background-image: url("../assets/mainresponsive3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: bottom;
+}
+
+.mainBg4 {
+  background-image: url("../assets/mainresponsive4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: bottom;
+}
+
+.loadingSection {
+  height: 100vh;
+  background-color: #000;
+}
+
+.footerBgContainer {
+  background-color: #000;
+}
+
+.loadingGif {
+  width: 250px;
 }
 
 .customDropdown {
@@ -29190,6 +29249,14 @@ body {
   font-size: 12px !important;
 }
 
+.fs-14 {
+  font-size: 14px !important;
+}
+
+.height-100 {
+  height: 100vh;
+}
+
 .customLink {
   list-style: none;
   text-decoration: none;
@@ -29207,7 +29274,7 @@ body {
 .customTextStyle {
   position: absolute;
   right: -25%;
-  bottom: 20%;
+  bottom: -15%;
   font-weight: bolder;
   width: 150px;
 }
@@ -29230,6 +29297,25 @@ body {
   color: var(--delete-hover-color) !important;
 }
 
+.customCardPng {
+  background: var(--card-general-bg-color);
+  height: 350px;
+  box-shadow: inset -6px 2px 41px -7px rgba(0, 0, 0, 0.4);
+}
+
+.imgContent {
+  max-height: 100%;
+}
+
+.textAnimation {
+  animation: glow 4000ms linear infinite 2000ms;
+}
+
+@keyframes glow {
+  40% {
+    text-shadow: -6px 3px 3px var(--shadow-general-bg-color);
+  }
+}
 .designContent::before {
   width: 250px;
   height: 370px;
@@ -29355,6 +29441,34 @@ body {
   }
 }
 @media screen and (min-width: 992px) {
+  .mainBg1 {
+    background-image: url("../assets/main3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: bottom;
+  }
+  .mainBg2 {
+    background-image: url("../assets/main5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: top;
+  }
+  .mainBg3 {
+    background-image: url("../assets/mainresponsive3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: bottom;
+  }
+  .mainBg4 {
+    background-image: url("../assets/mainresponsive4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: bottom;
+  }
   .customCloseNavbar {
     width: 33%;
   }

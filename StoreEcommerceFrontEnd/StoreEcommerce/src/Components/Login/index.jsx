@@ -29,7 +29,6 @@ const Login = () => {
                 return res.json();
             }
         })
-        await console.log(res)
         await localStorage.setItem("user", JSON.stringify(res));
         await successToastMessage("logged in succesfully");
     }

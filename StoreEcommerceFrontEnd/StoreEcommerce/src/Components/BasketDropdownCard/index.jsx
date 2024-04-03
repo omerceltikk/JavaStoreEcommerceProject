@@ -1,10 +1,8 @@
 import React from 'react'
 import { FetchDeleteMethod } from '../../Redux/FetchServices'
 const BasketDropdownCard = ({ item }) => {
-
     const handleDeleteBasketItem = () => {
         FetchDeleteMethod("baskets",item.basketId);
-
     }
     return (
         <div className='row px-3 py-4 m-0 align-items-center text-center border-bottom border-1 border-secondary'>

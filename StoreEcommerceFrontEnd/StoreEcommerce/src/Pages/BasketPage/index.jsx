@@ -4,7 +4,7 @@ import { fetchBasketData } from '../../Redux/Slices/basketSlice'
 import BasketPageCard from '../../Components/BasketPageCard';
 import { Link } from 'react-router-dom';
 import { errorToastMessage } from '../../Messages';
-
+import Loading from '../../Components/Loading';
 const BasketPage = () => {
     const dispatch = useDispatch();
     const [basketProducts, setBasketProducts] = useState([]);
@@ -26,6 +26,13 @@ const BasketPage = () => {
             }
         }
     }, [dispatch, data])
+
+    
+    if (status == "loading") {
+        return (
+          <Loading />
+        )
+      }
     return (
         <div className='container pt-100 h-100'>
             {

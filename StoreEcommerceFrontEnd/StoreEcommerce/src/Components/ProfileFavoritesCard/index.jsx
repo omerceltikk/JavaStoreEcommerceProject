@@ -10,7 +10,7 @@ const ProfileFavoritesCard = ({ item }) => {
     return (
         <div className='row px-3 py-4 m-0 align-items-center text-center border-bottom border-1 border-secondary'>
             <div className="col-2 basketCardImage">
-                <img className='img-fluid' src="../../../assets/productsimage3.jpg" alt="" />
+                <img className='img-fluid' src={item.imageUrl} alt="" />
             </div>
             <div className="col-4 fs-6 customCardText">
                 {item.productName}

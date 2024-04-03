@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Router from './Router/Router';
 import { fetchData } from './Redux/Slices/categorySlice';
 import Loading from './Components/Loading';
+import Footer from './Components/Footer';
 
 function App() {
   const data = useSelector((state) => state.categories.status);
@@ -26,6 +27,7 @@ if (data == "loading") {
     <>
       <Navbar />
       <Router/>
+      <Footer/>
       </>
   )
 }
