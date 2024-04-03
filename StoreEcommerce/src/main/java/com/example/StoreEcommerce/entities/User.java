@@ -13,7 +13,7 @@ import lombok.Data;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // oto create id
-	Long id;
+	 Long id;
 	
 	 String userName;
 	 String password;

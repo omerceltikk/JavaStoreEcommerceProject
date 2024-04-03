@@ -11,7 +11,6 @@ import lombok.Data;
 
 public class ProductCreateRequest {
 	Long userId;
-
 	String productName;
 	String productDescription;
 	String productUrl;

@@ -14,7 +14,6 @@ public interface FavoritesRepository extends JpaRepository<Favorites,Long> {
 
 	List<Favorites> findByUserId(Long userId);
 	
-	Optional<Favorites> findByfavoritesId(Long favoritesId);
 	
 	@Query(value="select * from dbo.demov5like where post_id in :productIds", nativeQuery=true)
 	List<Favorites> findUserLikesByPostId(@Param("productIds") List<Long> productIds);

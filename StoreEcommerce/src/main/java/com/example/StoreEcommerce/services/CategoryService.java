@@ -33,7 +33,7 @@ public class CategoryService {
 		return categoryRepo.findAll();
 	}
 	public Category getOneCategoryById(Long categoryId) {
-		return categoryRepo.findByCategoryId(categoryId);
+		return categoryRepo.findById(categoryId).orElse(null);
 	}
 	public Category createOneCategory(CategoryCreateRequest request) {
 		User currUser = userService.getUserWithUserId(request.getUserId());
@@ -41,12 +41,14 @@ public class CategoryService {
 		Category createdCategory = new Category();
 			createdCategory.setCategory(request.getCategory());
 			createdCategory.setCategoryGender(request.getCategoryGender());
+			createdCategory.setCategoryTr(request.getCategoryTr());
+			createdCategory.setUpperCategory(request.getUpperCategory());
 			return categoryRepo.save(createdCategory);
 //		}
 //		return null;
 	
 	}
-	public void deleteOneFavorites(Long categoryId) {
+	public void deleteOneCategory(Long categoryId) {
 		categoryRepo.deleteById(categoryId);
 	}
 }

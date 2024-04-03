@@ -8,15 +8,15 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.StoreEcommerce.entities.Images;
 
-public interface ImageRepository extends JpaRepository<Images,Integer> {
+public interface ImageRepository extends JpaRepository<Images,Long> {
 
-	List<Images> findByUserIdAndPostId(Integer userId, Integer postId);
+//	List<Images> findByUserIdAndPostId(Integer userId, Integer postId);
 
-	List<Images> findByUserId(Integer userId);
+//	List<Images> findByUserId(Integer userId);
 
-	List<Images> findByPostId(Integer postId);
+//	List<Images> findByPostId(Integer postId);
 	
-	List<Images> findByProductsId(Long long1);
+	List<Images> findByProductsId(Long productsId);
 	
 //	@Query(value="select * from dbo.demov5like where post_id in :postIds", nativeQuery=true)
 //	List<Images> findUserLikesByPostId(@Param("postIds") List<Integer> postIds);

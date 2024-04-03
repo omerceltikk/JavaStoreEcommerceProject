@@ -25,7 +25,7 @@ public class UserService {
 	public User getUserWithUserId(Long userId) {
 		//path varible annotation u ile gelen id yi getmapping pathine yönlendirdik
 		// dbde olmayan user için exception eklenecek
-		return userRepo.findByUserId(userId).orElse(null);
+		return userRepo.findById(userId).orElse(null);
 	}
 
 	public User createUser(User newUser) {
@@ -33,7 +33,7 @@ public class UserService {
 	}
 	
 	public User updateUser(Long userId,User newUser) {
-		Optional<User> user = userRepo.findByUserId(userId);
+		Optional<User> user = userRepo.findById(userId);
 		if(user.isPresent()) {
 			User updatedUser = new User();
 			updatedUser.setId(newUser.getId());
@@ -44,7 +44,7 @@ public class UserService {
 			return null;
 		}
 	}
-	public void DeleteUser(Integer id) {
+	public void DeleteUser(Long id) {
 		userRepo.deleteById(id);
 	}
 

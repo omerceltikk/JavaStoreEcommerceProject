@@ -38,7 +38,7 @@ public class FavoritesService {
 		
 	}
 	public Favorites getOneFavoritesById(Long favoritesId) {
-		return favoritesRepo.findByfavoritesId(favoritesId).orElse(null);
+		return favoritesRepo.findById(favoritesId).orElse(null);
 	}
 	public Favorites createOneFavorites(FavoritesCreateRequest request) {
 		Products currProduct = productService.getOneProductById(request.getProductsId());

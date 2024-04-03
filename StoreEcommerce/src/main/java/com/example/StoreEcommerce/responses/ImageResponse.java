@@ -12,8 +12,8 @@ public class ImageResponse {
 	String imageUrl;
 	
 	public ImageResponse(Images entity) {
-		this.imageId = entity.getImageId();
-		this.productId = entity.getProducts().getProductId();
+		this.imageId = entity.getId();
+		this.productId = entity.getProducts().getId();
 		this.imageUrl = entity.getImageUrl();
 	}	
 }

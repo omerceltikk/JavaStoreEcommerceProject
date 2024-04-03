@@ -11,13 +11,11 @@ import com.example.StoreEcommerce.entities.Basket;
 
 
 public interface BasketRepository extends JpaRepository<Basket,Long> {
-
+	
 	List<Basket> findByUserId(Long userId);
 	
-	Basket findByBasketId(Long favoritesId);
-	
-	@Query(value="select * from dbo.demov5like where post_id in :productIds", nativeQuery=true)
-	List<Basket> findUserLikesByPostId(@Param("productIds") List<Long> productIds);
+//	@Query(value="select * from dbo.demov5like where post_id in :productIds", nativeQuery=true)
+//	List<Basket> findUserLikesByPostId(@Param("productIds") List<Long> productIds);
 
 
 

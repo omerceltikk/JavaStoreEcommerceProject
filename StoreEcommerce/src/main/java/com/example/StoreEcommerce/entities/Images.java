@@ -23,7 +23,7 @@ import lombok.Data;
 public class Images {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // oto create id
-	Long imageId;
+	Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY) //hibernate üzerinde one to one many to one gibi bir çok ilişki kurabiliriz.
 	@JoinColumn(name = "product_id", nullable = false)

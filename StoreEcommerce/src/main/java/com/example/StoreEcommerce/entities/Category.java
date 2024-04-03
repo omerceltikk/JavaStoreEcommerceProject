@@ -13,9 +13,10 @@ import lombok.Data;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // oto create id
-	 Long categoryId;
+	 Long id;
 	
 	String categoryGender;
-	
+	String upperCategory;
 	String category;
+	String categoryTr;
 }

@@ -22,7 +22,7 @@ public class ProductResponse {
 	String primeCategory;
 
 	public ProductResponse(Products entity, List<ImageResponse> likes) {
-		this.productId = entity.getProductId();
+		this.productId = entity.getId();
 		this.productName = entity.getProductName();
 		this.productDescription = entity.getProductDescription();
 		this.productUrl = entity.getProductUrl();
@@ -30,7 +30,7 @@ public class ProductResponse {
 		this.productPrice = entity.getProductPrice();
 		this.discountPercent = entity.getDiscountPercent();
 		this.discountPrice = entity.getDiscountPrice();
-		this.categoryId = entity.getCategory().getCategoryId();
+		this.categoryId = entity.getCategory().getId();
 		this.primeCategory = entity.getCategory().getCategoryGender();
 		this.images =images;
 	}
