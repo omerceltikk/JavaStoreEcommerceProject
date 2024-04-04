@@ -87,13 +87,14 @@ public class SecurityConfig {
     		.exceptionHandling().authenticationEntryPoint(handler).and()
     		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
     		.authorizeHttpRequests()
-//    		.requestMatchers ( "/categories").permitAll()
+    		.requestMatchers ( "/categories").permitAll()
 //    		.requestMatchers ( "/favorites").permitAll()
-//    		.requestMatchers ("/products").permitAll()
-//    		.requestMatchers ("/auth/register").permitAll()
-//    		.requestMatchers ("/auth/login").permitAll()
-//    		.requestMatchers ("/auth/refresh").permitAll()
-    		.anyRequest().permitAll();
+    		.requestMatchers ("/products").permitAll()
+    		.requestMatchers ("/products/**").permitAll()
+    		.requestMatchers ("/auth/register").permitAll()
+    		.requestMatchers ("/auth/login").permitAll()
+    		.requestMatchers ("/auth/refresh").permitAll()
+    		.anyRequest().authenticated();
     		
     	httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     	return httpSecurity.build();
