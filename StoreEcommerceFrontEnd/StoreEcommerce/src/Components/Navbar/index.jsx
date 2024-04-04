@@ -20,6 +20,11 @@ const Navbar = () => {
         setCategories([...uniqueCategory]);
     }
 
+    const HandleLogOutClick = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     useEffect(() => {
         if (data == "idle") {
             dispacth(fetchData());
@@ -34,15 +39,9 @@ const Navbar = () => {
         if (userData.users.length > 0) {
             setCurrUser(userData.users[0]);
         }
-    }, [dispacth, userData])
+    }, [dispacth, userData.users])
 
-    if (data == "failed") {
-        return (
-            <>
-                <div>failed</div>
-            </>
-        )
-    }
+ 
     if (data == "fulfilled") {
 
         return (
@@ -106,7 +105,7 @@ const Navbar = () => {
                                                 <div className="dropdown-menu customTransition customDropdown mt-4">
                                                     <Link to={`profile/${currUser?.userId}`}><button className="dropdown-item" type="button">Profile</button></Link>
                                                     <li><button className="dropdown-item" type="button">Settings</button></li>
-                                                    <li><button className="dropdown-item" type="button">LogOut</button></li>
+                                                    <li><button onClick={() => HandleLogOutClick()} className="dropdown-item" type="button">LogOut</button></li>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,7 +156,7 @@ const Navbar = () => {
                                         <div className="dropdown-menu  customDropdown mt-3">
                                             <Link className='' to={`profile/${currUser?.userId}`}><button className="dropdown-item" type="button">Profile</button></Link>
                                             <li><button className="dropdown-item" type="button">Settings</button></li>
-                                            <li><button className="dropdown-item" type="button">LogOut</button></li>
+                                            <li><button onClick={() => HandleLogOutClick()} className="dropdown-item" type="button">LogOut</button></li>
                                         </div>
                                     </div>
                                     <div>

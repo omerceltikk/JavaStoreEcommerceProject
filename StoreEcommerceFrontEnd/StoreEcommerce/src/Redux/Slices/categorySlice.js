@@ -11,7 +11,7 @@ export const categorySlice = createSlice({
     initialState: {
         categories: [],
         status: "idle",
-        error: "null",
+        error: null,
     },
     reducers: {
 

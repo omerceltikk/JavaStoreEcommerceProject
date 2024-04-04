@@ -11,6 +11,7 @@ export const usersSlice = createSlice({
     initialState: {
         users: JSON.parse(localStorage.getItem("user")) ? [JSON.parse(localStorage.getItem("user"))] : [],
         status: "idle",
+        error: null,
     },
  
     extraReducers: (builder) => {

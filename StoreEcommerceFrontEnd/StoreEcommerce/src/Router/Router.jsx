@@ -8,6 +8,8 @@ import CompleteBuy from '../Pages/CompleteBuy'
 import ProfilePage from '../Pages/Profile'
 import Auth from '../Pages/Auth'
 import { useSelector } from 'react-redux'
+import NotFound from '../Pages/404NotFound'
+import ErrorPage from '../Components/ErrorPage'
 const Router = () => {
   const userData = useSelector((state) => state.users)
   const routes = useRoutes([
@@ -25,11 +27,11 @@ const Router = () => {
     },
     {
       path: "/basket",
-      element: <BasketPage />
+      element: userData.users.length > 0 ? <BasketPage /> : <MainPage/>
     },
     {
       path: "/CompleteBuy",
-      element: <CompleteBuy />
+      element: userData.users.length > 0 ?  <CompleteBuy /> : <MainPage/>
     },
     {
         path:"/authentication",
@@ -37,8 +39,12 @@ const Router = () => {
     },
     {
         path:"/profile/:userId",
-        element: <ProfilePage />
+        element: userData.users.length > 0 ?  <ProfilePage /> : <ErrorPage item={"user not found. please sign in"}/>
     },
+    {
+      path:"*",
+      element:<NotFound/>
+  },
   ])
 
   return routes

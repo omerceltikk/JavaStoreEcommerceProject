@@ -11,6 +11,7 @@ export const basketsSlice = createSlice({
     initialState: {
         baskets: [],
         status: "idle",
+        error: null,
     },
     reducers: {
 

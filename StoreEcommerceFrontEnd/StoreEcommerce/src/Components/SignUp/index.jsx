@@ -25,7 +25,8 @@ const SignUp = () => {
             }
         })
         await localStorage.setItem("user", JSON.stringify(res));
-        await navigate("/");
+        window.location.href = "/";
+
     }
 
     const formik = useFormik({

@@ -9,28 +9,30 @@ import { errorToastMessage, successToastMessage } from '../../Messages';
 // import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
-
     const onSubmit = async (values) => {
         const valuesBody = {
             userName: values.username,
             password: values.password,
             userStatus: "user",
         }
-        const res = await FetchPostMethod("auth/login",valuesBody).then((res) => {
+        const res = await FetchPostMethod("auth/login", valuesBody).then((res) => {
             if (res.status != 200) {
                 const response = RefreshToken();
                 if (response.status == 200) {
-                   return FetchPostMethod("auth/login".valuesBody).then((res) = res.json());
-                }else{
+                    return FetchPostMethod("auth/login".valuesBody).then((res) = res.json());
+                } else {
                     navigate("/login");
                     errorToastMessage("user can not be logged in")
                 }
             } else {
                 return res.json();
+               
             }
         })
         await localStorage.setItem("user", JSON.stringify(res));
         await successToastMessage("logged in succesfully");
+        window.location.href = "/";
+
     }
 
     const formik = useFormik({
@@ -76,9 +78,12 @@ const Login = () => {
                                         />
                                     </div>
                                     <div>
-                                        <button type="submit" className='btn btn-outline-secondary py-2 px-4 mt-3' >
-                                            Submit
-                                        </button>
+                                            <button type="submit" className='btn btn-outline-secondary py-2 px-4 mt-3' >
+                                                Submit
+                                            </button>
+                                        <div>
+                                        test1 Test1
+                                        </div>
                                         {formik.errors.password && <div className='text-danger error'>{formik.errors.password}</div>}
                                     </div>
                                 </form>

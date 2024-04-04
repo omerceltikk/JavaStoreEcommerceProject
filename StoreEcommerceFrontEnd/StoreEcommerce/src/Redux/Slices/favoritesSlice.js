@@ -11,6 +11,7 @@ export const favoritesSlice = createSlice({
     initialState: {
         favorites: [],
         status: "idle",
+        error: null,
     },
     reducers: {
 

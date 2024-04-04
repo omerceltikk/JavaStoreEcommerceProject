@@ -13,19 +13,21 @@ const BasketDropdown = () => {
     const userData = useSelector((state) => state.users.users)
 
     useEffect(() => {
-        if (status == "idle") {
-            dispatch(fetchBasketData(`basket?userId=${userData[0].userId}`));
-        }
-        if (status == "fulfilled") {
-            const filteredData = data.baskets.filter((item) => item.userId == userData[0].userId);
-            if (filteredData.length >= 0 && filteredData.status != 400) {
-                setBasketProducts(filteredData);
+        if (userData.length > 0) {
+            if (status == "idle") {
+                dispatch(fetchBasketData(`basket?userId=${userData[0]?.userId}`));
             }
-            else {
-                errorToastMessage(filteredData.error)
+            if (status == "fulfilled") {
+                const filteredData = data.baskets.filter((item) => item.userId == userData[0].userId);
+                if (filteredData.length >= 0 && filteredData.status != 400) {
+                    setBasketProducts(filteredData);
+                }
+                else {
+                    errorToastMessage(filteredData.error)
+                }
             }
         }
-    }, [dispatch, data])
+    }, [dispatch, data, userData])
 
     return (
         <div>

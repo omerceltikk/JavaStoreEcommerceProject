@@ -10,6 +10,7 @@ export const ordersSlice = createSlice({
     initialState: {
         orders: [],
         status: "idle",
+        error: null,
     },
     reducers: {
 

@@ -1,17 +1,25 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loading from '../../Components/Loading';
+import ErrorPage from '../../Components/ErrorPage';
 const MainPage = () => {
   const dispatch = useDispatch();
   const currUserData = useSelector((state) => state.users);
-  const categoriesData = useSelector((state) => state.products)
+  const categoriesData = useSelector((state) => state.products);
+
+  const data = useSelector((state) => state.categories);
+
 
   if (categoriesData.status == "loading") {
     return (
       <Loading />
     )
   }
-
+if( data.status == "failed"){
+  return(
+     <ErrorPage item={data.error}/>
+     )
+}
 
   return (
     <div>
