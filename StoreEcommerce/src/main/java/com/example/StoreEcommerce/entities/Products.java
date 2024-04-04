@@ -26,7 +26,7 @@ import lombok.Data;
 public class Products {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // oto create id
-	 Long productId;
+	 Long id;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //hibernate üzerinde one to one many to one gibi bir çok ilişki kurabiliriz.
 	@JoinColumn(name = "category_id", nullable = false)

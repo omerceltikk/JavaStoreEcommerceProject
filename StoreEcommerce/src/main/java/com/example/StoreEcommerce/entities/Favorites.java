@@ -21,7 +21,7 @@ import lombok.Data;
 public class Favorites {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // oto create id
-	 Long favoritesId;
+	 Long id;
 	
 	@ManyToOne(fetch = FetchType.EAGER) //hibernate üzerinde one to one many to one gibi bir çok ilişki kurabiliriz.
 	@JoinColumn(name = "user_id", nullable = false)

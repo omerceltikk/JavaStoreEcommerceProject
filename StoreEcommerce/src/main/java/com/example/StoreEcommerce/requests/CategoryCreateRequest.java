@@ -6,5 +6,7 @@ import lombok.Data;
 public class CategoryCreateRequest {
 	String categoryGender;
 	String category;
+	String categoryTr;
+	String upperCategory;
 	Long userId;
 }

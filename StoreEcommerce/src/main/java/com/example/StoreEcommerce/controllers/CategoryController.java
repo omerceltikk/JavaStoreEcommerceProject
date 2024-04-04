@@ -12,35 +12,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.StoreEcommerce.entities.Category;
 import com.example.StoreEcommerce.entities.Favorites;
+import com.example.StoreEcommerce.requests.CategoryCreateRequest;
 import com.example.StoreEcommerce.requests.FavoritesCreateRequest;
 import com.example.StoreEcommerce.responses.FavoritesActivityResponse;
+import com.example.StoreEcommerce.services.CategoryService;
 import com.example.StoreEcommerce.services.FavoritesService;
 
 
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
-private	FavoritesService favoritesService;
+private	CategoryService categoryService;
 	
-	public CategoryController(FavoritesService favoritesService) {
-		this.favoritesService = favoritesService;
+	public CategoryController(CategoryService categoryService) {
+		this.categoryService = categoryService;
 	}
 	
 	@GetMapping
-	public List<FavoritesActivityResponse> getAllFavorites(Optional<Long> userId){
-		return favoritesService.getAllFavorites(userId);
+	public List<Category> getAllFavorites(Optional<Long> userId){
+		return categoryService.getAllCategories();
 	}
-	@GetMapping("/{favoritesId}")
-	public Favorites getOneFavoritesById(@PathVariable Long favoritesId) {
-		return favoritesService.getOneFavoritesById(favoritesId);
+	@GetMapping("/{categoryId}")
+	public Category getOneCategoryById(@PathVariable Long categoryId) {
+		return categoryService.getOneCategoryById(categoryId);
 	}
 	@PostMapping
-	public Favorites createOneFavorites(@RequestBody FavoritesCreateRequest request) {
-		return favoritesService.createOneFavorites(request);
+	public Category createOneCategory(@RequestBody CategoryCreateRequest request) {
+		return categoryService.createOneCategory(request);
 	}
-	@DeleteMapping("/{favoritesId}")
-	public void deleteOneFavorites(@PathVariable Long favoritesId) {
-		favoritesService.deleteOneFavorites(favoritesId);
+	@DeleteMapping("/{categoryId}")
+	public void deleteOneFavorites(@PathVariable Long categoryId) {
+		categoryService.deleteOneCategory(categoryId);
 	}
 }

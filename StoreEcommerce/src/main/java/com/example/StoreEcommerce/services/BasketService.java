@@ -20,9 +20,7 @@ import com.example.StoreEcommerce.responses.BasketResponse;
 import com.example.StoreEcommerce.responses.FavoritesActivityResponse;
 
 
-
 @Service
-
 public class BasketService {
 	private BasketRepository basketRepository;
 	private UserService userService;
@@ -34,18 +32,16 @@ public class BasketService {
 	}
 	public List<BasketResponse> getAllBasket(Optional<Long> userId) {
 		List<Basket> list;
-		
 		 if(userId.isPresent()) {
 			list = basketRepository.findByUserId(userId.get());
 		}
-		
 		list = basketRepository.findAll();
 		 return list.stream().map((l) -> new BasketResponse(l)).collect(Collectors.toList());
 		
 	}
 	public Basket getOneBasketById(Long basketId) {
-		Basket currBasket = basketRepository.findByBasketId(basketId);
-		if(currBasket.getBasketId() != null) {
+		Basket currBasket = basketRepository.findById(basketId).orElse(null);
+		if(currBasket.getId() != null) {
 			return currBasket;
 		}
 		return null;
@@ -68,8 +64,8 @@ public class BasketService {
 	}
 	
 	public Basket updateBasket(Long basketId, BasketCreateRequest basketCreateRequest) {
-		Basket currBasket = basketRepository.findByBasketId(basketId);	
-		Long stockCount = productService.getOneProductById(currBasket.getProducts().getProductId()).getProductStockCount();
+		Basket currBasket = basketRepository.findById(basketId).orElse(null);	
+		Long stockCount = productService.getOneProductById(currBasket.getProducts().getId()).getProductStockCount();
 		if(stockCount < currBasket.getProductCount()) {
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}

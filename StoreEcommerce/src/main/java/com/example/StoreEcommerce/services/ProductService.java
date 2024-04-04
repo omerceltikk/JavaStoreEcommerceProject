@@ -42,14 +42,14 @@ public class ProductService {
 		List<Products> list;
 		list = productRepository.findAll();	
 		return list.stream().map(p -> {
-			List<ImageResponse> images = imageRepo.findByProductsId(p.getProductId()).stream().map((l) -> new ImageResponse(l)).collect(Collectors.toList());
+			List<ImageResponse> images = imageRepo.findByProductsId(p.getId()).stream().map((l) -> new ImageResponse(l)).collect(Collectors.toList());
 			return new ProductResponse(p, images);
 		}).collect(Collectors.toList());
 	}
 
 	public Products getOneProductById(Long productsId) {
 		// exception handle!!
-		return productRepository.findByProductsId(productsId);
+		return productRepository.findById(productsId).orElse(null);
 	}
 
 	public Products createProduct(ProductCreateRequest newPostRequest) throws Exception {
@@ -65,7 +65,7 @@ public class ProductService {
 		toSave.setDiscountPrice(newPostRequest.getDiscountPrice());
 		toSave.setProductStockCount(newPostRequest.getProductStockCount());
 		toSave.setProductUrl(newPostRequest.getProductUrl());
-		toSave.setCategory(categoryRepo.findByCategoryId(newPostRequest.getCategoryId()));
+		toSave.setCategory(categoryRepo.findById(newPostRequest.getCategoryId()).orElse(null));
 		if(newPostRequest.getProductImageUrls().size() != 0) {
 			for(String  imageUrl : newPostRequest.getProductImageUrls()) {
 				Images toSaveImage = new Images();
@@ -79,11 +79,11 @@ public class ProductService {
 
 
 	public Products updateProduct(Long productsId,BuyingProductUpdateRequest buyingProductUpdateRequest) throws Exception {
-		Products product = productRepository.findByProductsId(productsId);
+		Products product = productRepository.findById(productsId).orElse(null);
 		if(product.getProductStockCount() < buyingProductUpdateRequest.getBuyingCount()) {	
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}else {
-		product.setProductId(product.getProductId());
+		product.setId(product.getId());
 		product.setProductStockCount(product.getProductStockCount() - buyingProductUpdateRequest.getBuyingCount());	
 		return productRepository.save(product);
 		}

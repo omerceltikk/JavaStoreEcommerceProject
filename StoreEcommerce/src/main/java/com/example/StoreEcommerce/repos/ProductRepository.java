@@ -10,7 +10,6 @@ import com.example.StoreEcommerce.entities.Products;
 
 public interface ProductRepository extends JpaRepository<Products, Long> {
 
-	Products findByProductsId(Long productsId);
 	//jpa repository ile gelen bir findBy kalıbı ile interfacede istenen bir metod u oluşturup kullanıyoruz.
 	//yazdığımız custom findBy kalıbı ile istediğimiz metodu oluşturuyoruz ve gerisini jpa düzenliyor.
 
