@@ -15,11 +15,11 @@ const MainPage = () => {
       <Loading />
     )
   }
-if( data.status == "failed"){
-  return(
-     <ErrorPage item={data.error}/>
-     )
-}
+  if (data.status == "failed") {
+    return (
+      <ErrorPage item={data.error} />
+    )
+  }
 
   return (
     <div>
@@ -66,7 +66,7 @@ if( data.status == "failed"){
           <div className="row p-0 m-0 align-items-lg-end height-100">
             <div className='col-12 pb-lg-4 p-0 m-0'>
               <div className='display-1 pt-5 pt-lg-0 fw-bold text-secondary textAnimation'>
-                Discover Your Style, Define Your Story
+                Discover Your Style Destination!
               </div>
             </div>
           </div>

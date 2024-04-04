@@ -42,7 +42,7 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="col-12 col-xl-4 p-0">
-          <img className='img-fluid' src={`../../../assets/productsImages/productsimage${Math.ceil(Math.random() * 11)}.jpg`} alt="" />
+          <img className='img-fluid' src={`../../../assets/productsImages/productsimage5.jpg`} alt="" />
         </div>
         <div className="col-12 col-xl-6  pe-lg-5 pt-lg-2 align-self-start">
           <div className="row justify-content-end">
