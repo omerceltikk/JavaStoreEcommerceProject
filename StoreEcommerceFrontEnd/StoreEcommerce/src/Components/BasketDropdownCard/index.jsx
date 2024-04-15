@@ -1,13 +1,20 @@
 import React from 'react'
 import { FetchDeleteMethod } from '../../Redux/FetchServices'
+import { fetchBasketData } from '../../Redux/Slices/basketSlice'
+import { useDispatch,useSelector } from 'react-redux'
+
 const BasketDropdownCard = ({ item }) => {
-    const handleDeleteBasketItem = () => {
-        FetchDeleteMethod("baskets",item.basketId);
+const dispatch = useDispatch();
+const userData = useSelector((state) => state.users.users)
+
+    const handleDeleteBasketItem = async () => {
+        await FetchDeleteMethod("basket", item.basketId)
+        await dispatch(fetchBasketData(`basket?userId=${userData[0].userId}`));
     }
     return (
         <div className='row px-3 py-4 m-0 align-items-center text-center border-bottom border-1 border-secondary'>
             <div className="col-3 basketCardImage">
-                <img className='img-fluid' src="../../../assets/productsimage3.jpg" alt="" />
+                <img className='img-fluid' src={item.productUrl} alt="" />
             </div>
             <div className="col-3 fs-6 customCardText">
                 {item.productName}

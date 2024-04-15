@@ -16,7 +16,7 @@ const BasketPageCard = ({ item }) => {
 
         <div className='row px-3 py-3 m-0 align-items-center text-center border-bottom border-1 border-secondary'>
             <div className="col-6 col-lg-1 basketCardImage">
-                <img className='img-fluid' src="../../../assets/productsimage3.jpg" alt="" />
+                <img className='img-fluid' src={item.productUrl} alt="" />
             </div>
             <div className="col-6 col-lg-4 text-start align-self-start">
                 <div className='fs-5 fw-bold text-secondary'>

@@ -6,10 +6,7 @@ import { FetchPostMethod } from '../../Redux/FetchServices';
 import { ToastContainer, toast } from 'react-toastify';
 import { errorToastMessage } from '../../Messages';
 
-// import { ToastContainer, toast } from 'react-toastify';
 const SignUp = () => {
-    const navigate = useNavigate();
-
 
     const onSubmit = async (values) => {
         const valuesBody = {
@@ -17,15 +14,16 @@ const SignUp = () => {
             password: values.password,
             userStatus: "user",
         }
-        const res = await FetchPostMethod("auth/register", valuesBody).then((res) => {
+        const response = await FetchPostMethod("auth/register", valuesBody).then((res) => {
             if (res.status != 200) {
-                errorToastMessage("Service not support Sign Up for now.")
-            } else {
+                errorToastMessage("username already in use")
+                        } else {
                 return res.json();
             }
         })
-        await localStorage.setItem("user", JSON.stringify(res));
-        window.location.href = "/";
+        await localStorage.setItem("user", JSON.stringify(response));
+        await console.log(response)
+         window.location.href = "/";
 
     }
 

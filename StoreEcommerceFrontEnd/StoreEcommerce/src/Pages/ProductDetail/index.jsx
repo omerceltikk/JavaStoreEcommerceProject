@@ -22,7 +22,7 @@ const ProductDetail = () => {
       setProduct(filteredData);
     }
   }, [dispatch, data])
-  
+
   if (status == "loading") {
     return (
       <Loading />
@@ -42,7 +42,34 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="col-12 col-xl-4 p-0">
-          <img className='img-fluid' src={`../../../assets/productsImages/productsimage5.jpg`} alt="" />
+          {/* <img className='img-fluid' src={`../../../assets/productsImages/productsimage5.jpg`} alt="" /> */}
+
+
+
+          <div id="carouselExample" className="carousel slide">
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img src="../../../assets/productsImages/productsimage5.jpg" className="d-block w-100" alt="..." />
+              </div>
+              {
+                product?.images?.map((item) => (
+                  <div key={item.imageId} className="carousel-item ">
+                    <div className="d-flex align-items-center h-100vh justify-content-center">
+                      <img src={item.imageUrl} className="img-fluid d-block img-max" alt="..." />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
         <div className="col-12 col-xl-6  pe-lg-5 pt-lg-2 align-self-start">
           <div className="row justify-content-end">
@@ -80,10 +107,8 @@ const ProductDetail = () => {
           </div>
           <div className="col-12">
             <div className="row">
-              <div className="col-12 col-xl-4 pt-3">
-                asdasda
-              </div>
-              <div className="col-12 col-xl-8 d-flex justify-content-center justify-content-lg-end mt-3">
+
+              <div className="col-12 d-flex justify-content-center justify-content-lg-end mt-3">
                 <div className='mt-3 col-12'>
                   <div className='row'>
                     <div className=' mt-3 ps-5 text-end fw-bold text-secondary fs-5'>

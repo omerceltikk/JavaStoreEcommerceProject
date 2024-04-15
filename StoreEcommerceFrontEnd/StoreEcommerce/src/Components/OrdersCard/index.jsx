@@ -31,12 +31,14 @@ const OrdersCard = ({ item }) => {
                     <div className='px-4'>
                         {
                             products.map((item, i) => (
-                                <div key={i} className='row mt-2 p-2 m-0 align-items-center text-center border-bottom border-1 border-light rounded-3'>
-                                    <div className="col-1 basketCardImage">
-                                        <img className='img-fluid' src="../../../assets/productsimage3.jpg" alt="" />
-                                    </div>
-                                    <div className="col-8 fs-6 customCardText">
+                                
+                                <div key={i} className='row mt-2 p-2 m-0 align-items-center  border-bottom border-1 border-light rounded-3'>
+
+                                    <div className="col-6 fs-6 customCardText">
                                         {item.productName}
+                                    </div>
+                                    <div className="col-3 fs-6 customCardText">
+                                        {item.productCount} x {item.price / item.productCount}$
                                     </div>
                                     <div className="col-3 fw-bold fs-6 text-secondary basketCardText text-center">
                                         {item.price}$

@@ -53,7 +53,7 @@ const Categories = () => {
                     <div className="col-12 col-lg-4 p-0">
                         <img className='img-fluid' src={`../../../assets/productsImages/productsimage${Math.ceil(Math.random() * 11)}.jpg`} alt="" />
                     </div>
-                    <div className='col-12 mb-160 mb-lg-0 col-lg-1 mt-80 align-self-start display-3'>
+                    <div className='col-12 mb-160 mb-lg-0 col-lg-1 mt-80 align-self-start display-3  text-secondary'>
                         design the future
                     </div>
                     <div className="col-12  col-lg-6  d-flex justify-content-center ">
@@ -65,7 +65,7 @@ const Categories = () => {
                             </div>
                             <div className='designContent3'>
                             </div>
-                            <div className='customTextStyle '>
+                            <div className='customTextStyle'>
                                 Fashion isn't just about clothes, it's a reflection of one's personality, a canvas where creativity meets expression, and a journey of self-discovery through style.
                             </div>
                         </div>
@@ -74,7 +74,7 @@ const Categories = () => {
             </div>
             <div className="container py-5">
                 <div className="row">
-                    <div className="col-12 py-5">
+                    <div className="col-12 py-5 fs-1 fw-semibold text-secondary f">
                         Products
                     </div>
                     {

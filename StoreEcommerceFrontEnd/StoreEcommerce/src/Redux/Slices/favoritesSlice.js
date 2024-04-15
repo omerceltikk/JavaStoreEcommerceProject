@@ -14,7 +14,9 @@ export const favoritesSlice = createSlice({
         error: null,
     },
     reducers: {
-
+        deletefavMethod: (state,action) => {
+            state.status = "idle";
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -32,6 +34,6 @@ export const favoritesSlice = createSlice({
     },
 });
 
-export const {} = favoritesSlice.actions;
+export const {deletefavMethod} = favoritesSlice.actions;
 
 export default favoritesSlice.reducer;

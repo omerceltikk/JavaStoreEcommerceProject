@@ -1,12 +1,13 @@
 import React from 'react'
 import { FetchDeleteMethod } from '../../Redux/FetchServices'
+import { deletefavMethod } from '../../Redux/Slices/favoritesSlice'
+import { useDispatch } from 'react-redux'
 const ProfileFavoritesCard = ({ item }) => {
-
-    const handleDeleteBasketItem = () => {
-        FetchDeleteMethod("favorites",item.favoritesId);
-
+const dispatch = useDispatch();
+    const handleDeleteBasketItem = async() => {
+        await FetchDeleteMethod("favorites",item.favoritesId);
+        await dispatch(deletefavMethod());
     }
-    console.log(item)
     return (
         <div className='row px-3 py-4 m-0 align-items-center text-center border-bottom border-1 border-secondary'>
             <div className="col-2 basketCardImage">

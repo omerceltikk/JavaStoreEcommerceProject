@@ -17,7 +17,8 @@ const CompleteBuy = () => {
             dispatch(fetchBasketData("basket"));
         }
         if (status == "fulfilled") {
-            const filteredData = data.baskets;
+            const currUserId = JSON.parse(localStorage.getItem("user"));
+            const filteredData = data.baskets.filter((item) => item.userId == currUserId.userId);
             setProducts(filteredData)
             let price = 0;
             filteredData.map((item) => {
@@ -112,7 +113,7 @@ const CompleteBuy = () => {
                         {
                             products.map((item) => (
 
-                                <p className="fst-italic fw-semibold mt-3 ms-2 basketCardText"> {item.productCount} x {item.productName} </p>
+                                <p key={item.id} className="fst-italic fw-semibold mt-3 ms-2 basketCardText"> {item.productCount} x {item.productName} </p>
                             ))
                         }
                     </div>

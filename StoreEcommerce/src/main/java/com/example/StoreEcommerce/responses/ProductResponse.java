@@ -21,7 +21,7 @@ public class ProductResponse {
 	Long categoryId;
 	String primeCategory;
 
-	public ProductResponse(Products entity, List<ImageResponse> likes) {
+	public ProductResponse(Products entity, List<ImageResponse> images) {
 		this.productId = entity.getId();
 		this.productName = entity.getProductName();
 		this.productDescription = entity.getProductDescription();

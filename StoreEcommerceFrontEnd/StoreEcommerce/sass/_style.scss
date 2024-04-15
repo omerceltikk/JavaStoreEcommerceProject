@@ -41,7 +41,12 @@ body {
     height: 70px;
     border-radius: 50%;
 }
-
+.h-100vh{
+    height: 100vh;
+}
+.img-max{
+    max-height: 600px;
+}
 .word-wrap {
     word-wrap: break-word;
 }
@@ -108,11 +113,11 @@ body {
 }
 
 .customCardText {
-    font-size: 10px !important;
+    font-size: 12px !important;
 }
 
 .basketCardText {
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 .fs-14 {
@@ -176,6 +181,9 @@ body {
 
 .textAnimation {
     animation:  glow 4000ms linear infinite 2000ms;
+}
+.customProductImageCard{
+    height: 100px;
 }
 
 @keyframes glow {
