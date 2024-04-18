@@ -8,6 +8,15 @@ export default defineConfig(({mode}) => {
     define: {
       'process.env': env
     },
+    optimizeDeps: {
+      exclude: ['js-big-decimal']
+    },
     plugins: [react()],
   } 
 })
+
+
+
+
+
+ 

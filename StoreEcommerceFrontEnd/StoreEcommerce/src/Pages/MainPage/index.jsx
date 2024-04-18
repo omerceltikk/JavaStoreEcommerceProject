@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loading from '../../Components/Loading';
 import ErrorPage from '../../Components/ErrorPage';
+import SummaryModal from '../../Components/SummaryModal';
 const MainPage = () => {
   const dispatch = useDispatch();
   const currUserData = useSelector((state) => state.users);
@@ -31,6 +32,7 @@ const MainPage = () => {
 
                 <div className={`display-1 fw-bold text-secondary textAnimation`}>
                   Discover Your Style, Define Your Story
+      <SummaryModal/>
                 </div>
               </div>
             </div>
@@ -72,6 +74,25 @@ const MainPage = () => {
           </div>
         </div>
       </div>
+      <div className="modal show" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Modal Başlık</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        Modal içeriği buraya gelecek.
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                        <button type="button" className="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }

@@ -37,11 +37,11 @@ const Categories = () => {
                             <img className='img-fluid d-lg-block d-none' src="../../../assets/productsmain.jpg" alt="" />
                             <img className='img-fluid d-lg-none d-block' src="../../../assets/productsresmain.jpg" alt="" />
                             <div className='w-25 d-none d-lg-block position-absolute bottom-0 end-0 mb-lg-120 me-lg-120 mb-xl-160 me-xl-160 mb-xxl-360 me-xxl-360 text-secondary display-6'>
-                            Chic Choices, Endless Possibilities
+                                Chic Choices, Endless Possibilities
                             </div>
                             <div className='d-flex d-lg-none justify-content-center position-absolute text-secondary display-6 bottom-0 w-100 mb-120'>
                                 <p>
-                                Chic Choices, Endless Possibilities
+                                    Chic Choices, Endless Possibilities
                                 </p>
                             </div>
                         </div>
@@ -55,6 +55,9 @@ const Categories = () => {
                     </div>
                     <div className='col-12 mb-160 mb-lg-0 col-lg-1 mt-80 align-self-start display-3  text-secondary'>
                         design the future
+                        <div className='mt-80 fs-5 d-block d-lg-none d-xl-block'>
+                                Fashion isn't just about clothes, it's a reflection of one's personality, a canvas where creativity meets expression, and a journey of self-discovery through style.
+                            </div>
                     </div>
                     <div className="col-12  col-lg-6  d-flex justify-content-center ">
                         <div className='position-relative '>
@@ -65,9 +68,7 @@ const Categories = () => {
                             </div>
                             <div className='designContent3'>
                             </div>
-                            <div className='customTextStyle'>
-                                Fashion isn't just about clothes, it's a reflection of one's personality, a canvas where creativity meets expression, and a journey of self-discovery through style.
-                            </div>
+
                         </div>
                     </div>
                 </div>
